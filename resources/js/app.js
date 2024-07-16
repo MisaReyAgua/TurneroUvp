@@ -1,5 +1,10 @@
 // Importaciones de bibliotecas y módulos necesarios
-import './bootstrap'; // Puede contener configuraciones iniciales de Bootstrap u otras librerías
+// Importa los estilos y componentes de Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+
+// Opcional: importa FontAwesome si también lo estás utilizando
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './bootstrap';
 import './chart';
 import './codemirror';

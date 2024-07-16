@@ -8,6 +8,7 @@
     @vite(['resources/css/app.css'])
     <link rel="shortcut icon" href="assets/images/favicon.ico" />
     
+    
   </head>
   <body>
     <div class="container-scroller">
@@ -40,7 +41,7 @@
                   <span class="availability-status online"></span>
                 </div>
                 <div class="nav-profile-text">
-                  <p class="mb-1 text-black">David Greymaax</p>
+                  <p class="mb-1 text-white">David Greymaax</p>
                 </div>
               </a>
               <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -295,19 +296,19 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title">
-                <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="mdi mdi-home"></i>
-                </span> Dashboard
-              </h3>
-              <nav aria-label="breadcrumb">
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item active" aria-current="page">
-                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+                <h3 class="page-title">
+                  <span class="page-title-icon bg-gradient-primary text-white me-2">
+                    <i class="fa-brands fa-shirtsinbulk"></i>
+                   </span> Gestion de turnos
+                </h3>
+                <nav aria-label="breadcrumb">
+                  <ul class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">
+                      <span></span>Overview <i class="fa-solid fa-circle-info"></i>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
             <div class="row">
               <div class="col-md-4 stretch-card grid-margin">
                 <div class="card bg-gradient-danger card-img-holder text-white">
