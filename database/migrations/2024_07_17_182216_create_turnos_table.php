@@ -9,16 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-   // create_turnos_table.php
-    public function up()
+    public function up(): void
     {
         Schema::create('turnos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_estudiante');
-            $table->unsignedBigInteger('casilla_id');
-            $table->foreign('casilla_id')->references('id')->on('casillas')->onDelete('cascade');
-            $table->timestamp('hora_asignada');
-            $table->boolean('atendido')->default(false);
+            $table->integer('modulos_abiertos');
+            $table->time('hora_inicio');
+            $table->time('hora_cierre');
+            $table->text('recesos')->nullable();
             $table->timestamps();
         });
     }
