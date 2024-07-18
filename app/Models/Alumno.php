@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Turno extends Model
+class Alumno extends Model
 {
     use HasFactory;
-    
     protected $fillable = [
-        'modulos_abiertos',
-        'modulos_disponibles',
-        'hora_inicio',
-        'hora_cierre',
-        'recesos',
+        'nombre',
+        'modulo_asignado',
     ];
 }

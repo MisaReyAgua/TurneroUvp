@@ -21,9 +21,13 @@ class TurnoController extends Controller
             'recesos' => 'nullable|string',
         ]);
 
-        Turno::create($request->all());
-
-        
+        Turno::create([
+            'modulos_abiertos' => $request->modulos_abiertos,
+            'modulos_disponibles' => $request->modulos_abiertos, // Inicializar con el mismo valor de modulos_abiertos
+            'hora_inicio' => $request->hora_inicio,
+            'hora_cierre' => $request->hora_cierre,
+            'recesos' => $request->recesos,
+        ]);
 
         return redirect()->route('nuevo-dia.create')->with('success', 'El día ha sido configurado exitosamente.');
     }

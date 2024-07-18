@@ -8,6 +8,6 @@
     <div>
         {!! $qrCode !!}
     </div>
-    <a href="{{ route('generar-qr') }}" class="btn btn-secondary mt-3">Generar otro QR</a>
+    {{-- <a href="{{ route('generar-qr') }}" class="btn btn-secondary mt-3">Generar otro QR</a> --}}
 </div>
 @endsection
