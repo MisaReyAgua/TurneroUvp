@@ -3,7 +3,7 @@
 @section('title', 'Configuración del Día')
 
 @section('content')
-<div class="container mt-5 mb-3">
+<div class="container mt-1 mb-3">
     <div class="row">
         <div class="col-md-12">
             <div class="card">

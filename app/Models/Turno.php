@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Turno extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'modulos_abiertos',
         'modulos_disponibles',
@@ -16,4 +16,9 @@ class Turno extends Model
         'hora_cierre',
         'recesos',
     ];
+
+    public function modules()
+    {
+        return $this->hasMany(Module::class);
+    }
 }

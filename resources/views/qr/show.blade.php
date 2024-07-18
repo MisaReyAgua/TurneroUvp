@@ -3,7 +3,7 @@
 @section('title', 'Generación de QR')
 
 @section('content')
-<div class="container mt-5 text-center">
+<div class="container mt-1 text-center">
     <h2>QR Generado</h2>
     <div>
         {!! $qrCode !!}

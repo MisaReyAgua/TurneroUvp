@@ -296,19 +296,15 @@
             <!-- Start Main Panel-->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="page-header">
+                    <div class="page-header d-flex justify-content-between">
                         <h3 class="page-title">
                           <span class="page-title-icon bg-gradient-primary text-white me-2">
                             <i class="fa-brands fa-shirtsinbulk"></i>
                            </span> Gestion de turnos
                         </h3>
-                        <nav aria-label="breadcrumb">
-                          <ul class="breadcrumb">
-                            <li class="breadcrumb-item active" aria-current="page">
-                              <span></span>Overview <i class="fa-solid fa-circle-info"></i>
-                            </li>
-                          </ul>
-                        </nav>
+                        <div class="d-flex align-items-center">
+                          <span>Overview <i class="fa-solid fa-circle-info"> </i></span>      
+                        </div>
                       </div>
                     <div class="row">
                       <!-- Start Nuevo Dia -->

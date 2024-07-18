@@ -40,16 +40,24 @@ class QRController extends Controller
             'nombre' => $request->nombre,
         ]);
 
-        // Verificar disponibilidad de módulos
-        if ($turno->modulos_disponibles > 0) {
-            // Asignar el siguiente módulo disponible
-            $alumno->update(['modulo_asignado' => $turno->modulos_abiertos - $turno->modulos_disponibles + 1]);
-            $turno->decrement('modulos_disponibles');
-        } else {
-            // Poner al alumno en espera (sin módulo asignado)
-            $alumno->update(['modulo_asignado' => null]);
-        }
+        // Asignar módulo si hay uno disponible
+        $this->asignarModulo($alumno, $turno);
 
         return redirect()->route('alumno.form')->with('success', 'Has sido añadido a la fila de espera. Espera tu turno para pasar al módulo asignado.');
+    }
+
+    protected function asignarModulo(Alumno $alumno, Turno $turno)
+    {
+        // Buscar un módulo disponible
+        $moduloDisponible = $turno->modules()->where('estado', 'abierto')->doesntHave('alumnos')->first();
+
+        if ($moduloDisponible) {
+            $alumno->modulo_asignado = $moduloDisponible->id;
+            $alumno->save();
+        } else {
+            // Poner al alumno en espera (sin módulo asignado)
+            $alumno->modulo_asignado = null;
+            $alumno->save();
+        }
     }
 }
