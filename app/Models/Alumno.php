@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Alumno extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'nombre',
-        'modulo_asignado',
+        'module_id',
     ];
+
+    public function module()
+    {
+        return $this->belongsTo(Module::class);
+    }
 }

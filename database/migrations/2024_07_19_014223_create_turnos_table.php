@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('modules', function (Blueprint $table) {
+        Schema::create('turnos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('turno_id');
-            $table->string('estado')->default('abierto');
+            $table->integer('modulos_abiertos');
+            $table->integer('modulos_disponibles');
+            $table->time('hora_inicio');
+            $table->time('hora_cierre');
+            $table->text('recesos')->nullable();
             $table->timestamps();
-            $table->foreign('turno_id')->references('id')->on('turnos')->onDelete('cascade');
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('modules');
+        Schema::dropIfExists('turnos');
     }
 };

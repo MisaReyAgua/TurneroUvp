@@ -12,9 +12,13 @@
             </div>
             <div class="barrita mt-2 mb-2"></div>
             @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @elseif(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
             @endif
             <div class="row">
                 <div class="col-12 mt-3 ">
@@ -31,8 +35,5 @@
         </div>
     </div>
 </div>
-    
-   
-    
 
 @endsection

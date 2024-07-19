@@ -12,6 +12,7 @@ class Module extends Model
     protected $fillable = [
         'turno_id',
         'estado',
+        'numero', // Añadir la columna numero
     ];
 
     public function turno()

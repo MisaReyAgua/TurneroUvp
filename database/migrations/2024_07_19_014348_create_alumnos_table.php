@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->integer('modulo_asignado')->nullable();
+            $table->unsignedBigInteger('module_id')->nullable(); // Asegúrate de que esto coincida con el tipo de la clave primaria en `modules`
             $table->timestamps();
+            $table->foreign('module_id')->references('id')->on('modules')->onDelete('set null');
         });
     }
 
