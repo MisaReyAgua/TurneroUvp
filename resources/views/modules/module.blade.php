@@ -16,9 +16,14 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                     <p><strong>Estado del Módulo:</strong> {{ $module->estado }}</p>
-                    @if($alumno)
-                        <p><strong>Alumno Atendido:</strong> {{ $alumno->nombre }}</p>
+                    @if(session('alumno') || $alumno)
+                        <p><strong>Alumno Atendido:</strong> {{ session('alumno')->nombre ?? $alumno->nombre }}</p>
                         <form action="{{ route('module.attended', $moduleId) }}" method="POST" class="mb-2">
                             @csrf
                             <button type="submit" class="btn btn-success">Marcar como Atendido</button>

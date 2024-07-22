@@ -14,8 +14,8 @@
         <!-- Start header-->
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row bg-dark" data-bs-theme="dark">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start bg-dark" data-bs-theme="dark">
-                <a class="" href="{{ route('welcome') }}"><img class="img-fluid m-2" src="{{ asset('assets/images/logo_uvp.png') }}" alt="logo"/></a>
-                <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('assets/images/logo-mini.svg') }}" alt="logo" /></a>            
+                <a class="navbar-brand brand-logo" href="{{ route('welcome') }}"><img class="img-fluid m-2" src="{{ asset('assets/images/logo_uvp.png') }}" alt="logo"/></a>
+                <a class="navbar-brand brand-logo-mini" href="{{ route('welcome') }}"><img src="{{ asset('assets/images/logoUvp-mini.png') }}" alt="logo" /></a>            
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
               <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="mdi mdi-email-outline"></i>
+                    <i class="fa-solid fa-envelope"></i>
                     <span class="count-symbol bg-warning"></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="messageDropdown">
@@ -65,7 +65,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
-                        <img src="assets/images/faces/face4.jpg" alt="image" class="profile-pic">
+                        {{-- <img src="assets/images/faces/face4.jpg" alt="image" class="profile-pic"> --}}
                       </div>
                       <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                         <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Mark send you a message</h6>
@@ -75,7 +75,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
-                        <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic">
+                        {{-- <img src="assets/images/faces/face2.jpg" alt="image" class="profile-pic"> --}}
                       </div>
                       <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                         <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Cregh send you a message</h6>
@@ -85,7 +85,7 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
-                        <img src="assets/images/faces/face3.jpg" alt="image" class="profile-pic">
+                        {{-- <img src="assets/images/faces/face3.jpg" alt="image" class="profile-pic"> --}}
                       </div>
                       <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
                         <h6 class="preview-subject ellipsis mb-1 font-weight-normal">Profile picture updated</h6>
@@ -98,7 +98,7 @@
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-                    <i class="mdi mdi-bell-outline"></i>
+                    <i class="fa-solid fa-bell"></i>
                     <span class="count-symbol bg-danger"></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-end navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
@@ -119,7 +119,7 @@
                     <a class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
                         <div class="preview-icon bg-warning">
-                          <i class="mdi mdi-cog"></i>
+                          <i class="fa-solid fa-gear"></i>
                         </div>
                       </div>
                       <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
@@ -145,7 +145,7 @@
                 </li>
                 <li class="nav-item nav-logout d-none d-lg-block">
                   <a class="nav-link" href="#">
-                    <i class="mdi mdi-power"></i>
+                    <i class="fa-solid fa-power-off"></i>
                   </a>
                 </li>
                 <li class="nav-item nav-settings d-none d-lg-block">
@@ -154,8 +154,8 @@
                   </a>
                 </li>
               </ul>
-              <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                <span class="mdi mdi-menu"></span>
+              <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                <span class="fa-solid fa-bars"></span>
               </button>
             </div>
         </nav>
@@ -164,140 +164,90 @@
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
             <!-- Start Sidebar-->
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-                <ul class="nav">
+            <!-- Sidebar visible en pantallas grandes -->
+            <nav class="sidebar sidebar-offcanvas d-none d-lg-block" id="sidebar">
+              <ul class="nav">
                   <li class="nav-item nav-profile">
-                    <a href="#" class="nav-link">
-                      <div class="nav-profile-image">
-                        <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile" />
-                        <span class="login-status online"></span>
-                        <!--change to offline or busy as needed-->
-                      </div>
-                      <div class="nav-profile-text d-flex flex-column">
-                        <span class="font-weight-bold mb-2">David Grey. H</span>
-                        <span class="text-secondary text-small">Project Manager</span>
-                      </div>
-                      <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-                    </a>
+                      <a href="#" class="nav-link">
+                          <div class="nav-profile-image">
+                              <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile" />
+                              <span class="login-status online"></span>
+                              <!--change to offline or busy as needed-->
+                          </div>
+                          <div class="nav-profile-text d-flex flex-column">
+                              <span class="font-weight-bold mb-2">David Grey. H</span>
+                              <span class="text-secondary text-small">Project Manager</span>
+                          </div>
+                          <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+                      </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                      <span class="menu-title">Dashboard</span>
-                      <i class="mdi mdi-home menu-icon"></i>
-                    </a>
+                      <a class="nav-link" href="{{ route('welcome') }}">
+                          <span class="menu-title"><i class="fa-solid fa-house"></i> Inicio</span>
+                      </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                      <span class="menu-title">Basic UI Elements</span>
-                      <i class="menu-arrow"></i>
-                      <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="ui-basic">
-                      <ul class="nav flex-column sub-menu">
+                  <!-- Enlaces a los módulos generados -->
+                  @if(session('moduleNumbers'))
+                    @foreach(session('moduleNumbers') as $moduleNumber)
                         <li class="nav-item">
-                          <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a>
+                            <a class="nav-link" href="{{ url('module/' . $moduleNumber) }}">
+                                <span class="menu-title"><i class="fa-solid fa-street-view"></i> Módulo {{ $moduleNumber }}</span>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
-                      <span class="menu-title">Icons</span>
-                      <i class="mdi mdi-contacts menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="icons">
-                      <ul class="nav flex-column sub-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/icons/font-awesome.html">Font Awesome</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="forms">
-                      <span class="menu-title">Forms</span>
-                      <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="forms">
-                      <ul class="nav flex-column sub-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/forms/basic_elements.html">Form Elements</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
-                      <span class="menu-title">Charts</span>
-                      <i class="mdi mdi-chart-bar menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="charts">
-                      <ul class="nav flex-column sub-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
-                      <span class="menu-title">Tables</span>
-                      <i class="mdi mdi-table-large menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="tables">
-                      <ul class="nav flex-column sub-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/tables/basic-table.html">Basic table</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                      <span class="menu-title">User Pages</span>
-                      <i class="menu-arrow"></i>
-                      <i class="mdi mdi-lock menu-icon"></i>
-                    </a>
-                    <div class="collapse" id="auth">
-                      <ul class="nav flex-column sub-menu">
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/samples/login.html"> Login </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/samples/register.html"> Register </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/samples/error-404.html"> 404 </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="pages/samples/error-500.html"> 500 </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="docs/documentation.html" target="_blank">
-                      <span class="menu-title">Documentation</span>
-                      <i class="mdi mdi-file-document-box menu-icon"></i>
-                    </a>
-                  </li>
-                </ul>
+                    @endforeach
+                  @endif
+                  <!-- Más elementos del menú -->
+              </ul>
             </nav>
+            
+            <!-- Sidebar como offcanvas en pantallas pequeñas -->
+            <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasSidebar">
+              <div class="offcanvas-header">
+                  <h5 class="offcanvas-title">Menu</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                  <nav class="sidebar">
+                      <ul class="nav">
+                          <li class="nav-item nav-profile">
+                              <a href="#" class="nav-link">
+                                  <div class="nav-profile-image">
+                                      <img src="{{ asset('assets/images/faces/face1.jpg') }}" alt="profile" />
+                                      <span class="login-status online"></span>
+                                      <!--change to offline or busy as needed-->
+                                  </div>
+                                  <div class="nav-profile-text d-flex flex-column">
+                                      <span class="font-weight-bold mb-2">David Grey. H</span>
+                                      <span class="text-secondary text-small">Project Manager</span>
+                                  </div>
+                                  <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('welcome') }}">
+                                  <span class="menu-title"><i class="fa-solid fa-house"></i> Inicio</span>
+                              </a>
+                          </li>
+                          @if(session('moduleNumbers'))
+                            @foreach(session('moduleNumbers') as $moduleNumber)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('module/' . $moduleNumber) }}">
+                                        <span class="menu-title"><i class="fa-solid fa-street-view"></i> Módulo {{ $moduleNumber }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                          @endif  
+                          <!-- Más elementos del menú -->
+                      </ul>
+                  </nav>
+              </div>
+            </div>
             <!-- End Sidebar-->
             <!-- Start Main Panel-->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="page-header d-flex justify-content-between">
-                        <h3 class="page-title">
+                    <div class="page-header d-flex justify-content-between flex-wrap">
+                        <h3 class="page-title me-2">
                           <span class="page-title-icon bg-gradient-primary text-white me-2">
                             <i class="fa-brands fa-shirtsinbulk"></i>
                            </span> Gestion de turnos
@@ -333,7 +283,7 @@
                       <!-- End Generar QR -->
                       <!-- Start Pantalla de visualización -->
                       <div class="col-md-4 stretch-card grid-margin">
-                        <a href="#" class="card bg-gradient-success card-img-holder text-white text-decoration-none">
+                        <a href="{{ route('pantalla.visualizacion') }}" class="card bg-gradient-success card-img-holder text-white text-decoration-none">
                           <div class="card-body d-flex align-items-center justify-content-center">
                             <div class="text-center">
                               <i class="fa-solid fa-display fa-4x mb-2 mt-2"></i>

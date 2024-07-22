@@ -19,3 +19,5 @@ Route::post('/alumno-form', [QRController::class, 'store'])->name('alumno.store'
 Route::get('/module/{moduleId}', [TurnoController::class, 'showModule'])->name('module.show');
 Route::post('/module/{moduleId}/attended', [TurnoController::class, 'markAsAttended'])->name('module.attended');
 Route::post('/module/{moduleId}/toggle', [TurnoController::class, 'toggleModuleState'])->name('module.toggle');
+
+Route::get('/pantalla-visualizacion', [TurnoController::class, 'pantallaVisualizacion'])->name('pantalla.visualizacion');

@@ -279,26 +279,7 @@ input:focus {
 }
 
 /* Fonts */
-@font-face {
-  font-family: "ubuntu-light";
-  src: url("../fonts/Ubuntu/Ubuntu-Light.eot"); /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Light.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Light.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Light.ttf") format("truetype");
-}
-@font-face {
-  font-family: "ubuntu-regular";
-  src: url("../fonts/Ubuntu/Ubuntu-Regular.eot"); /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Regular.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Regular.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Regular.ttf") format("truetype");
-}
-@font-face {
-  font-family: "ubuntu-medium";
-  src: url("../fonts/Ubuntu/Ubuntu-Medium.eot"); /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Medium.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Medium.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Medium.ttf") format("truetype");
-}
-@font-face {
-  font-family: "ubuntu-bold";
-  src: url("../fonts/Ubuntu/Ubuntu-Bold.eot"); /* IE9 Compat Modes */
-  src: url("../fonts/Ubuntu/Ubuntu-Bold.woff2") format("woff2"), url("../fonts/Ubuntu/Ubuntu-Bold.woff") format("woff"), url("../fonts/Ubuntu/Ubuntu-Bold.ttf") format("truetype");
-}
+
 .text-twitter {
   color: #2caae1;
 }
@@ -2484,20 +2465,14 @@ code {
   color: #1b2658;
 }
 .navbar .navbar-brand-wrapper .navbar-brand img {
-  width: calc(260px - 120px);
-  max-width: 100%;
-  height: 28px;
+  /* width: calc(260px - 120px);
+  max-width: 100%; */
+  height: 42px;
   margin: auto;
   vertical-align: middle;
 }
 .navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini {
   display: none;
-}
-.navbar .navbar-brand-wrapper .navbar-brand.brand-logo-mini img {
-  width: calc(70px - 50px);
-  max-width: 100%;
-  height: 28px;
-  margin: auto;
 }
 .navbar .navbar-menu-wrapper {
   transition: width 0.25s ease;
@@ -2937,11 +2912,11 @@ code {
 
 /* Sidebar */
 .sidebar {
-  min-height: calc(100vh - 70px);
+  /* min-height: calc(100vh - 70px); */
   background: #ffffff;
   font-family: "ubuntu-regular", sans-serif;
   padding: 0;
-  width: 260px;
+  /* width: 260px; */
   z-index: 11;
   transition: width 0.25s ease, background 0.25s ease;
   -webkit-transition: width 0.25s ease, background 0.25s ease;
@@ -3568,7 +3543,7 @@ code {
 
 .main-panel {
   transition: width 0.25s ease, margin 0.25s ease;
-  width: calc(100% - 260px);
+  /* width: calc(100% - 260px); */
   min-height: calc(100vh - 70px);
   display: -webkit-flex;
   display: flex;
