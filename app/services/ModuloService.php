@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Models\Alumno;
 use App\Models\Module;
+use App\Models\Turno;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Servicio para manejar la asignación y el estado de módulos.
@@ -18,7 +20,19 @@ class ModuloService
      */
     public function asignarModulo(Alumno $alumno)
     {
-        $moduloDisponible = Module::where('estado', 'abierto')->doesntHave('alumnos')->first();
+        // Obtén el turno actual
+        $turnoActivo = Turno::orderBy('created_at', 'desc')->first();
+        
+        if (!$turnoActivo) {
+            return; // No hay turno activo, no podemos asignar módulos
+        }
+    
+        // Busca un módulo disponible en el turno actual
+        $moduloDisponible = Module::where('estado', 'abierto')
+            ->where('turno_id', $turnoActivo->id)
+            ->doesntHave('alumnos')
+            ->first();
+    
         if ($moduloDisponible) {
             $alumno->module_id = $moduloDisponible->id;
             $alumno->save();
@@ -33,16 +47,20 @@ class ModuloService
      */
     public function attendAlumnoInModule($module)
     {
-        $alumno = Alumno::where('module_id', $module->id)->first();
-        if ($alumno) {
-            $alumno->delete();
-        }
+        DB::transaction(function () use ($module) {
+            // Recupera al alumno asignado al módulo y lo elimina
+            $alumno = Alumno::where('module_id', $module->id)->lockForUpdate()->first();
+            if ($alumno) {
+                $alumno->delete();
+            }
 
-        $nextAlumno = Alumno::whereNull('module_id')->orderBy('created_at')->first();
-        if ($nextAlumno) {
-            $nextAlumno->module_id = $module->id;
-            $nextAlumno->save();
-        }
+            // Asigna el módulo al siguiente alumno en la fila
+            $nextAlumno = Alumno::whereNull('module_id')->orderBy('created_at')->lockForUpdate()->first();
+            if ($nextAlumno) {
+                $nextAlumno->module_id = $module->id;
+                $nextAlumno->save();
+            }
+        });
     }
 
     /**
@@ -53,15 +71,17 @@ class ModuloService
      */
     public function toggleState($module)
     {
-        $module->estado = $module->estado == 'abierto' ? 'cerrado' : 'abierto';
-        $module->save();
+        DB::transaction(function () use ($module) {
+            $module->estado = $module->estado == 'abierto' ? 'cerrado' : 'abierto';
+            $module->save();
 
-        if ($module->estado == 'abierto') {
-            $nextAlumno = Alumno::whereNull('module_id')->orderBy('created_at')->first();
-            if ($nextAlumno) {
-                $nextAlumno->module_id = $module->id;
-                $nextAlumno->save();
+            if ($module->estado == 'abierto') {
+                $nextAlumno = Alumno::whereNull('module_id')->orderBy('created_at')->lockForUpdate()->first();
+                if ($nextAlumno) {
+                    $nextAlumno->module_id = $module->id;
+                    $nextAlumno->save();
+                }
             }
-        }
+        });
     }
 }

@@ -47,14 +47,17 @@ class TurnoController extends Controller
      */
     public function markAsAttended($moduleId)
     {
-        $module = Module::where('numero', $moduleId)->first();
+        $module = Module::where('numero', $moduleId)
+        ->where('turno_id', Turno::orderBy('created_at', 'desc')->first()->id)
+        ->first();
+
         if (!$module) {
             return redirect()->route('module.show', $moduleId)->with('error', 'El módulo no existe.');
         }
-
+    
         $this->moduloService->attendAlumnoInModule($module);
         $alumno = Alumno::where('module_id', $module->id)->first(); // Recupera el siguiente alumno
-
+    
         return redirect()->route('module.show', $moduleId)->with(['success' => 'El alumno ha sido atendido.', 'alumno' => $alumno]);
     }
 
@@ -66,13 +69,16 @@ class TurnoController extends Controller
      */
     public function toggleModuleState($moduleId)
     {
-        $module = $this->getModuleById($moduleId);
-        if (!$module) {
-            return redirect()->route('nuevo-dia.create')->with('error', 'El módulo solicitado no existe.');
-        }
-
-        $this->moduloService->toggleState($module);
-        return redirect()->route('module.show', $moduleId)->with('success', 'El estado del módulo ha sido cambiado.');
+         // Recupera el módulo basado en el número
+         $module = Module::where('numero', $moduleId)->first();
+         if (!$module) {
+             return redirect()->route('nuevo-dia.create')->with('error', 'El módulo solicitado no existe.');
+         }
+ 
+         // Usa el servicio para cambiar el estado del módulo
+         $this->moduloService->toggleState($module);
+ 
+         return redirect()->route('module.show', $moduleId)->with('success', 'El estado del módulo ha sido cambiado.');
     }
 
     public function pantallaVisualizacion()

@@ -57,11 +57,11 @@ class QRController extends Controller
      */
     public function store(Request $request)
     {
-        // Crear un nuevo alumno y asignar un módulo
+        // Crea un nuevo alumno y asigna un módulo
         $alumno = $this->createAlumno($request);
         $this->moduloService->asignarModulo($alumno);
-
-        // Redirigir al formulario con un mensaje de éxito
+        
+        // Redirige al formulario con un mensaje de éxito
         return redirect()->route('alumno.form')->with('success', 'Has sido añadido a la fila de espera. Espera tu turno para pasar al módulo asignado.');
     }
 
