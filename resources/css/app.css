@@ -3591,3 +3591,14 @@ code {
   background-repeat: repeat;
   background-color: #d0d3dc;
 }
+
+.table-espera  {
+  font-size: 1.25rem; /* Tamaño de fuente mayor */
+}
+.table-espera th, .table td {
+  padding: 1rem; /* Mayor padding para mejor legibilidad */
+}
+/* Aumenta el tamaño de los encabezados */
+.table-espera th {
+  font-size: 1.5rem;
+}

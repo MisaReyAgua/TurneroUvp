@@ -1,25 +1,7 @@
 @extends('layouts.appAlumnos')
 
 @section('title', 'Lista de espera')
-<style>
-    /* Aumenta el tamaño del texto y el espaciado de las celdas */
-    .table {
-        font-size: 1.25rem; /* Tamaño de fuente mayor */
-    }
-    .table th, .table td {
-        padding: 1rem; /* Mayor padding para mejor legibilidad */
-    }
-    /* Aumenta el tamaño de los encabezados */
-    .table th {
-        font-size: 1.5rem;
-    }
-    /* Estilo del encabezado de la tabla */
-    .thead-dark th {
-        background-color: #343a40;
-        color: #ffffff;
-        font-size: 1.5rem; /* Tamaño de fuente para encabezados */
-    }
-</style>
+
 @section('content')
 <div class="container mt-5">
     
@@ -39,7 +21,7 @@
     <!-- Tabla de Alumnos -->
     <div class="card shadow-sm">
         <div class="card-body">
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered table-espera">
                 <thead class="thead-dark">
                     <tr>
                         <th>#</th>
